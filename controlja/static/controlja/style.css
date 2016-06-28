@@ -1,0 +1,202 @@
+/* 	
+*
+*	Style de Juanito
+*	2016
+*
+*/
+
+body
+{
+	margin: auto 5% auto 5%;
+	font-family: tahoma,arial;
+}
+
+h1
+{
+	font-weight: 300;
+	font-size: 30px;
+	text-align: center;
+}
+
+h2
+{
+	font-size: 25px;
+}
+
+h3
+{
+	font-size: 20px;
+    font-weight: 300;
+}
+
+a
+{
+    transition: background-color 0.5s ease;
+}
+
+#potato1
+{
+	color: yellow;
+}
+
+#potato2
+{
+	color: cyan;
+	background-color: grey;
+}
+
+.selected
+{
+	color: red;
+}
+
+p
+{
+	font: 300 13px;
+}
+
+td
+{
+	border: 2px solid black;
+	margin: 0px;
+}
+
+th
+{
+	margin: 0px;
+	border: 4px solid black;
+}
+
+.salto1
+{
+	margin-bottom: 4px;
+}
+
+.salto2
+{
+	margin-bottom:8px;
+}
+
+.salto3
+{
+	margin-bottom: 12px;
+}
+
+form
+{
+	margin-bottom: 12px;
+}
+
+input[name="content"]
+{
+	height: 100px;
+	width: 25%;
+}
+
+.articulo
+{
+	margin-bottom: 10px;
+	background-color: #eeeeee;
+	border-radius: 5px;
+	padding: 10px;
+	float: left;
+	width: 100%;
+}
+
+.articulo a
+{
+	color: dodgerblue;
+}
+
+.articulo span.label
+{
+	font-weight: bold;
+}
+
+.articulo span
+{
+	font-size: 12px;
+}
+
+.button
+{
+	text-align: center;
+	display: block;
+	background-color: dodgerblue;
+	color: white;
+	width: 80px;
+	text-decoration: none;
+	margin: 5px auto;
+	padding: 10px 5px;
+	border-radius: 2px;
+	border: 0px;
+	cursor: pointer;
+}
+
+.columna .button
+{
+	text-align: center;
+	display: block;
+	background-color: dodgerblue;
+	color: white;
+	width: 80px;
+	text-decoration: none;
+	margin: 20.1px 0px;
+	padding: 10px 5px;
+	border-radius: 2px;
+	border: 0px;
+	cursor: pointer;
+}
+
+.button:hover
+{
+	background-color: turquoise;
+}
+
+#footPanel
+{
+	width: 100%;
+}
+
+.columna
+{
+	width: 33.33333333333%;
+	float: left;
+}
+
+#newPostPanel
+{
+	text-align: center;
+}
+
+.row
+{
+	width: 100%;
+	float: left;
+}
+
+#map{
+    width: 80%;
+    text-align: center;
+    margin: 20px auto;
+    height: 200px;
+}
+
+.comentarios
+{
+    background-color: #ddd;
+    padding: 0 20px 20px;
+    border-radius: 0 0 5px 5px;
+    min-height: 100px;
+}
+.comentario
+{
+    margin-bottom: 15px;
+    border-bottom: 2px solid white;
+    padding-bottom: 20px;
+}
+
+.articulo > p
+{
+    margin-left: 20px;
+}

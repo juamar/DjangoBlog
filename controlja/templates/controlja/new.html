@@ -1,0 +1,15 @@
+{% extends 'controlja/base.html' %}
+
+{% block content %}
+
+	<div id="newPostPanel">
+		<h1>Nueva entrada</h1>
+		<form id="form1" enctype="multipart/form-data" method="post">
+			{% csrf_token%}
+            {{ form.as_p }}
+			<button class="button" onclick="this.submit();">Subir!</button>
+		</form>
+		<a href="/" class="button"><< al blog</a>
+	</div>
+
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'controlja/base.html' %}
+
+{% block content %}
+
+{% if latest_rutas_list %}
+
+    {% for ruta in latest_rutas_list %}
+        <div class="articulo">
+            <h2>{{ruta.direccion}}</h2>
+            <span>Distancia: {{ruta.distancia}}</span><br />
+            <span>tipo de ruta: {{ruta.tipo_ruta.tipo}}</span><br />
+            <span>autor: {{ruta.autor}}</span><br />
+            <br />
+            <a href="/{{ruta.pk}}">+ Info</a>
+        </div>
+    {% endfor %}
+{% else %}
+	<p>No hay rutas disponibles. Lo sentimos :S</p>
+
+{% endif %}
+{% endblock %}

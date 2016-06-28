@@ -1,0 +1,52 @@
+{% extends 'controlja/base.html' %}
+
+{% block content %}
+
+    <div class="articulo">
+        {% if error_message %}
+            <p><strong>{{ error_message }}</strong></p>
+        {% endif %}
+        <div class="row">
+            <div class="columna">
+                <a class="button" href="#">Editar</a>
+            </div>
+            <div class="columna">
+                <h1>{{ rutas.titulo }}</h1>
+            </div>
+        </div>
+        <h2>{{rutas.direccion}}</h2>
+        
+        <span>autor: {{rutas.autor}}</span><br />
+        <span>Distancia: {{rutas.distancia}}</span><br />
+        <span>tipo de ruta: {{rutas.tipo_ruta.tipo}}</span><br />
+        <span>Altimetria base: {{rutas.altimetria_base}}</span><br />
+        <span>Altimetria final: {{rutas.altimetria_final}}</span><br />
+        <span>Desnivel: {{rutas.desnivel}}</span><br />
+        <span>Recorrido circular: {{rutas.recorrido_circular}}</span><br />
+        <span>Recorrido lineal: {{rutas.recorrido_lineal}}</span><br />
+        
+        <h3>Libro de ruta</h3>
+        <p>{{rutas.libro_ruta}}</p>
+        <h3>Detalles</h3>
+        <p>{{rutas.detalles}}</p>
+        
+        <div class="comentarios">
+            <div class="row">
+                <div class="columna">
+                    <a class="button" href="#">+</a>
+                </div>
+                <div class="columna">
+                    <h1>Comentarios</h1>
+                </div>
+            </div>
+            {% for comentario in rutas.comentario_set.all %}
+                <div class="comentario">
+                    <span>autor: {{comentario.autor}}</span><br />
+                    <p>{{comentario.text}}</p>
+                    <span>Me gusta: {{comentario.likes}}</span><br />
+                </div>
+            {% endfor %}
+        </div>
+        
+    </div>
+{% endblock %}

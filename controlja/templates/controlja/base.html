@@ -1,0 +1,22 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WikiTrail</title>
+    <meta name="author" content="Juan Ignacio Avendaño Huergo">
+    <link rel="stylesheet" type="text/css" href="{% static 'controlja/style.css' %}" />
+  </head>
+  <body>
+    <div class="row">
+		<div class="columna"><a class="button" href="newPost.html">+ entrada</a></div><div class="columna"><h1>WikiTrail</h1></div>
+	</div>
+    <div>
+        {% block content %}
+        {% endblock %}
+    </div>
+    <div id="footPanel">
+		<p>Por Juan Ignacio Avenda&ntilde;o Huergo</p>
+	</div>
+  </body>
+</html>

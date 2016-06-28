@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Nueva Entrada</title>
+<link type="text/css" rel="stylesheet" href="style.css" media="all">
+</head>
+<body>
+	<div id="newPostPanel">
+		<h1>Nueva entrada</h1>
+		<form id="form1" action="listeners/newPost.php" method="post">
+			<div class="salto2">
+				<span>T&iacute;tulo</span><br/>
+				<input type="text" name="title" value="titulo"></input>
+			</div>
+			<div class="salto2">
+				<span>Contenido</span><br class="salto1"/>
+				<textarea name="content" form="form1"></textarea><br class="salto3"/>
+			</div>
+			<div class="salto2">
+				<span>autor</span><br class="salto1"/>
+				<input type="text"  name="autor"></input><br class="salto3"/>
+			</div>
+			<button class="button" onclick="this.submit();">Subir!</button>
+		</form>
+		<a href="/" class="button"><< al blog</a>
+	</div>
+</body>
+</html>
