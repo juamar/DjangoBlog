@@ -3,17 +3,13 @@
 {% block content %}
 
     <div class="articulo">
+    
         {% if error_message %}
             <p><strong>{{ error_message }}</strong></p>
         {% endif %}
-        <div class="row">
-            <div class="columna">
-                <a class="button" href="#">Editar</a>
-            </div>
-            <div class="columna">
-                <h1>{{ rutas.titulo }}</h1>
-            </div>
-        </div>
+
+        <h1>{{ rutas.titulo }}</h1>
+
         <h2>{{rutas.direccion}}</h2>
         
         <span>autor: {{rutas.autor}}</span><br />
@@ -33,12 +29,21 @@
         <div class="comentarios">
             <div class="row">
                 <div class="columna">
-                    <a class="button" href="#">+</a>
+                    <a class="button" href="#" onclick="addNewComentario()">+</a>
                 </div>
                 <div class="columna">
                     <h1>Comentarios</h1>
                 </div>
             </div>
+            
+            <form id="newComentario" method="POST" action="{% url 'controlja:new_comentario' rutas.id %}">
+                {% csrf_token%}
+                <span>Autor: {{form.autor}}</span><br />
+                <span>Mensaje: {{form.text|linebreaks}}</span><br />
+                {{form.likes.as_hidden}}
+                <input type="submit" value="Enviar" />
+            </form>
+            
             {% for comentario in rutas.comentario_set.all %}
                 <div class="comentario">
                     <span>autor: {{comentario.autor}}</span><br />

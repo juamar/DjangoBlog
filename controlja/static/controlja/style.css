@@ -200,3 +200,8 @@ input[name="content"]
 {
     margin-left: 20px;
 }
+
+#newComentario
+{
+    text-align: center;
+}
