@@ -12,3 +12,6 @@ Ahora, además, permite agregar comentarios.
 
 b0.003
 Prototipo de buscador (/search) y incrustada API de files_manager.
+
+b0.004
+Podemos gestionar los ficheros en el admin de django.

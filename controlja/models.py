@@ -41,3 +41,6 @@ class File(models.Model):
     create_on = models.DateTimeField(auto_now_add = True)
     modified_on = models.DateTimeField(auto_now_add = True)
     ruta = models.ForeignKey(Rutas, on_delete=models.SET_NULL, null=True)
+    
+    def __str__(self):
+        return self.file
