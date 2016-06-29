@@ -2,20 +2,45 @@
 
 {% block content %}
 
-{% if latest_rutas_list %}
+    <div class="row">
+        <div class="col_left">
+            {% if rutas_list %}
+                    {% for ruta in rutas_list %}
+                        <div class="articulo">
+                            <h2>{{ruta.direccion}}</h2>
+                            <span>Distancia: {{ruta.distancia}}</span><br />
+                            <span>tipo de ruta: {{ruta.tipo_ruta.tipo}}</span><br />
+                            <span>autor: {{ruta.autor}}</span><br />
+                            <br />
+                            <a href="/{{ruta.pk}}">+ Info</a>
+                        </div>
+                    {% endfor %}
+            {% else %}
+                {% if query %}
+                    {% if results %}
+                        {% for ruta in results %}
+                            
+                            <div class="articulo">
+                                <h2>{{ruta.direccion}}</h2>
+                                <span>Distancia: {{ruta.distancia}}</span><br />
+                                <span>tipo de ruta: {{ruta.tipo_ruta.tipo}}</span><br />
+                                <span>autor: {{ruta.autor}}</span><br />
+                                <br />
+                                <a href="/{{ruta.pk}}">+ Info</a>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <p>No se han encontrado rutas</p>
+                    {% endif %}
+                {% else %}
+                    <p>No hay rutas disponibles. Lo sentimos :S</p>
+                {% endif %}
 
-    {% for ruta in latest_rutas_list %}
-        <div class="articulo">
-            <h2>{{ruta.direccion}}</h2>
-            <span>Distancia: {{ruta.distancia}}</span><br />
-            <span>tipo de ruta: {{ruta.tipo_ruta.tipo}}</span><br />
-            <span>autor: {{ruta.autor}}</span><br />
-            <br />
-            <a href="/{{ruta.pk}}">+ Info</a>
+            {% endif %}
         </div>
-    {% endfor %}
-{% else %}
-	<p>No hay rutas disponibles. Lo sentimos :S</p>
 
-{% endif %}
+        <div class="col_right">
+        </div>
+    </div>
+
 {% endblock %}

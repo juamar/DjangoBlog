@@ -10,13 +10,11 @@ from django.db.models import Q
 from .serializers import FileSerializer
 from rest_framework.viewsets import ModelViewSet
 
-class IndexView(generic.ListView):
-    template_name = 'controlja/index.html'
-    context_object_name = 'latest_rutas_list'
-
-    def get_queryset(self):
-        """Return the last five published questions."""
-        return Rutas.objects.order_by('-create_on')[:5]
+def indexView(request):
+    idRuta = Rutas.objects.order_by('-create_on')[:5]
+    d = dict(rutas_list=idRuta)
+    d.update(csrf(request))
+    return render_to_response('controlja/index.html', d)
         
 def detail_view(request, pk):
     idRuta = Rutas.objects.get(pk=int(pk))
@@ -73,7 +71,7 @@ def search(request):
         results = Rutas.objects.filter(qset).distinct()
     else:
         results = []
-    return render_to_response("controlja/search.html",  {
+    return render_to_response("controlja/index.html",  {
         "results" : results, 
         "query" : query
     })

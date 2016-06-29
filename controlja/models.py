@@ -1,7 +1,7 @@
 from django.db import models
 from django.conf import settings
 
-UPLOADS_DIR = getattr(settings,  "UPLOADS_DIR",  "uploads")
+UPLOADS_DIR = getattr(settings,  "UPLOADS_DIR",  "controlja/static/uploads")
 
 class TipoRuta(models.Model):
     tipo = models.CharField(max_length=100)

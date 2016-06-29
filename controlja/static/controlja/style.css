@@ -231,3 +231,20 @@ input[name="content"]
 {
     background-color: turquoise;
 }
+
+.col_left
+{
+    width: 67%;
+    float: left;
+}
+
+.col_right
+{
+    width: 25%;
+    background-color: #ddd;
+    padding: 0 20px 20px;
+    border-radius: 5px;
+    min-height: 100px;
+    float: left;
+    margin-left: 35px;
+}
