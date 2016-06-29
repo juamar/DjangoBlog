@@ -9,10 +9,15 @@ from django.core.context_processors import csrf
 from django.db.models import Q
 from .serializers import FileSerializer
 from rest_framework.viewsets import ModelViewSet
+from django.core.paginator import Paginator
 
 def indexView(request):
-    idRuta = Rutas.objects.order_by('-create_on')[:5]
-    d = dict(rutas_list=idRuta)
+    idRuta = Rutas.objects.order_by('-create_on')
+    paginator = Paginator(idRuta, 3)
+    page = int(request.GET.get('page','1'))
+    idRuta = paginator.page(page)
+    tipoRuta = TipoRuta.objects.all()
+    d = dict(rutas_list=idRuta, tipoRuta=tipoRuta)
     d.update(csrf(request))
     return render_to_response('controlja/index.html', d)
         
@@ -80,7 +85,25 @@ class FileViewSet(ModelViewSet):
     queryset= File.objects.all()
     serializer_class = FileSerializer
 
-
+def ruta_filter(request, pk):
+  filteredContent = Rutas.objects.filter(tipo_ruta = pk)
+  tipoRuta = TipoRuta.objects.all()
+  tipoRutaName = TipoRuta.objects.get(pk = pk)
+  
+  context = {
+    
+    "filteredContent" : filteredContent,
+    "tipoRuta" : tipoRuta,
+    "tipoRutaName" : tipoRutaName
+    
+  }
+  return render(request, 'controlja/index.html', context)
+  
+def like(request, r, pk):
+    like = Comentario.objects.get(pk=pk)
+    like.likes += 1
+    like.save()
+    return HttpResponseRedirect(reverse("controlja:detail", args = (r, )))
 
 
 

@@ -14,4 +14,6 @@ urlpatterns = [
     url(r'newComentario/(\d+)/$',  new_comentario, name='new_comentario'), 
     url(r'search/$',  search, name='search'), 
     url(r'^',  include(router.urls)), 
+    url(r'^tipo/(?P<pk>\d+)/$', ruta_filter, name='filter'),
+    url(r'^like/(?P<r>\d+)/(?P<pk>\d+)/$', like, name='like'),
 ]

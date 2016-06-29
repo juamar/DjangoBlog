@@ -1,0 +1,10 @@
+
+Datos proxy con firefox en EUG
+
+Para los ordenadores de sala informatica
+en firefox
+firefox/options/advanced/network/connections/settings
+manual proxy configuration
+192.168.22.2
+port: 8080
+ahora irá internet!

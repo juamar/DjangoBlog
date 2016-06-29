@@ -33,13 +33,50 @@
                         <p>No se han encontrado rutas</p>
                     {% endif %}
                 {% else %}
-                    <p>No hay rutas disponibles. Lo sentimos :S</p>
+                    {% if filteredContent %}
+                        {% for ruta in filteredContent %}
+                            <div class="articulo">
+                                <h2>{{ruta.direccion}}</h2>
+                                <span>Distancia: {{ruta.distancia}}</span><br />
+                                <span>tipo de ruta: {{ruta.tipo_ruta.tipo}}</span><br />
+                                <span>autor: {{ruta.autor}}</span><br />
+                                <br />
+                                <a href="/{{ruta.pk}}">+ Info</a>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <p>No hay rutas disponibles. Lo sentimos :S</p>
+                    {% endif %}
                 {% endif %}
-
             {% endif %}
+            
+            <div class="row">
+                <div class="paginador">
+                   {% if rutas_list.has_previous %}
+                      <a class="pageButton" href="?page={{ rutas_list.previous_page_number }}">&#60</a>
+                   {% endif %}
+                    
+                   {% for pg in rutas_list.paginator.page_range %}
+                      {% if rutas_list.number == pg %}
+                         <a class="active" href="?page={{ pg }}">{{ pg }}</a>
+                      {% else %}
+                         <a class="pageButton" href="?page={{ pg }}">{{ pg }}</a>
+                      {% endif %}  
+                   {% endfor %}
+                      
+                   {% if rutas_list.has_next %}
+                      <a class="pageButton" href="?page={{ rutas_list.next_page_number }}">&#62</a>
+                   {% endif %}
+                </div>
+            </div>
         </div>
 
         <div class="col_right">
+            <h3>Filtar por:</h3>
+            {% for tipo in tipoRuta %}
+                 <a href="{% url 'controlja:filter' tipo.pk %}">{{ tipo.tipo }}</a>
+            {% endfor %}
+            <a href="{% url 'controlja:index'%}">Mostar todos</a>
         </div>
     </div>
 
