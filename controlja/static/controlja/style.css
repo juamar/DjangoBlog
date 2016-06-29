@@ -203,5 +203,31 @@ input[name="content"]
 
 #newComentario
 {
+    display: none;
     text-align: center;
+}
+
+#newComentario input
+{
+    margin-bottom: 10px;
+}
+
+#newComentario input[type="submit"]
+{
+	text-align: center;
+	background-color: dodgerblue;
+	color: white;
+	width: 80px;
+	text-decoration: none;
+	margin: 10px 0px;
+	padding: 10px 5px;
+	border-radius: 2px;
+	border: 0px;
+	cursor: pointer;
+    transition: background-color 0.5s ease;
+}
+
+#newComentario input[type="submit"]:hover
+{
+    background-color: turquoise;
 }

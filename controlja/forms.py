@@ -10,3 +10,8 @@ class FormularioComentario(forms.ModelForm):
     class Meta:
         model = Comentario
         exclude = ["ruta"]
+        widgets = {
+            'autor': forms.TextInput(attrs={'placeholder': 'Autor'}),
+            'text': forms.Textarea(
+                attrs={'placeholder': 'Mensaje'}),
+        }

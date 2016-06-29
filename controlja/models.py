@@ -1,4 +1,7 @@
 from django.db import models
+from django.conf import settings
+
+UPLOADS_DIR = getattr(settings,  "UPLOADS_DIR",  "uploads")
 
 class TipoRuta(models.Model):
     tipo = models.CharField(max_length=100)
@@ -32,3 +35,9 @@ class Comentario(models.Model):
     
     def __str__(self):
         return self.autor
+
+class File(models.Model):
+    file = models.FileField(upload_to=UPLOADS_DIR)
+    create_on = models.DateTimeField(auto_now_add = True)
+    modified_on = models.DateTimeField(auto_now_add = True)
+    ruta = models.ForeignKey(Rutas, on_delete=models.SET_NULL, null=True)

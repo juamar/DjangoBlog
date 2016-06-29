@@ -29,7 +29,7 @@
         <div class="comentarios">
             <div class="row">
                 <div class="columna">
-                    <a class="button" href="#" onclick="addNewComentario()">+</a>
+                    <a class="button" onclick="$('#newComentario').toggle();">+</a>
                 </div>
                 <div class="columna">
                     <h1>Comentarios</h1>
@@ -38,8 +38,8 @@
             
             <form id="newComentario" method="POST" action="{% url 'controlja:new_comentario' rutas.id %}">
                 {% csrf_token%}
-                <span>Autor: {{form.autor}}</span><br />
-                <span>Mensaje: {{form.text|linebreaks}}</span><br />
+                <span>{{form.autor}}</span><br />
+                <span>{{form.text}}</span><br />
                 {{form.likes.as_hidden}}
                 <input type="submit" value="Enviar" />
             </form>

@@ -1,11 +1,14 @@
 from django.http import HttpResponseRedirect,  HttpResponse
 from django.core.urlresolvers import reverse
-from .models import Rutas, Comentario
+from .models import *
 from django.shortcuts import render,  render_to_response
 from django.views import generic
 from .forms import NewRuta,  FormularioComentario
 from django.template import loader
 from django.core.context_processors import csrf
+from django.db.models import Q
+from .serializers import FileSerializer
+from rest_framework.viewsets import ModelViewSet
 
 class IndexView(generic.ListView):
     template_name = 'controlja/index.html'
@@ -56,3 +59,46 @@ def new_comentario(request,  pk):
         comentario.likes = 0
         comentario.save()
         return HttpResponseRedirect(reverse('controlja:detail',  args = (pk, )))
+        
+def search(request):
+    query = request.GET.get('q',  '')
+    if query:
+        qset = (
+            Q(titulo__icontains=query) |
+            Q(direccion__icontains=query) |
+            Q(autor__icontains=query) |
+            Q(detalles__icontains=query) |
+            Q(libro_ruta__icontains=query)
+        )
+        results = Rutas.objects.filter(qset).distinct()
+    else:
+        results = []
+    return render_to_response("controlja/search.html",  {
+        "results" : results, 
+        "query" : query
+    })
+    
+class FileViewSet(ModelViewSet):
+    queryset= File.objects.all()
+    serializer_class = FileSerializer
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

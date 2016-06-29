@@ -1,0 +1,28 @@
+{% extends 'controlja/base.html' %}
+
+{% block content %}
+
+	<div id="newPostPanel">
+		<h1>Busqueda</h1>
+		<form id="form1" action="." method="get">
+            <label for="q">Search: </label>
+            <input type="text" name="q" value="{{ query|escape }}">
+			<button class="button" onclick="this.submit();">Buscar!</button>
+		</form>
+		<a href="/" class="button"><< al blog</a>
+	</div>
+    {% if query %}
+        <h2>Resultados para "{{ query|escape }}":</h2>
+ 
+        {% if results %}
+            <ul>
+            {% for ruta in results %}
+                <li>{{ ruta|escape }}</l1>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>No se han encontrado rutas</p>
+        {% endif %}
+    {% endif %}
+
+{% endblock %}
